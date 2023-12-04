@@ -16,12 +16,11 @@ return new class extends Migration
             $table->string('nombre', 50);
             $table->string('apellidos', 50);
             $table->date('f_nacimiento');
+            $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+
     public function down(): void
     {
         Schema::dropIfExists('users');

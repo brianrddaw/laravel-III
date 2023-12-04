@@ -3,23 +3,20 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use App\Models\Comentario;
+use App\Models\User;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
- */
 class ComentarioFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
-            'titulo' => fake()->name(),
-            'publicacion' => fake()->text(),
-            'fecha' => fake()->date(),
+            'titulo' => fake()->words(3, true),
+            'publicacion' => fake()->paragraph(3),
+            'fecha' => fake()->date('Y-m-d'),
+            'user_id' => User::all()->random()->id
         ];
     }
 }
